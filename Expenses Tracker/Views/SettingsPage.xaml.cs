@@ -34,9 +34,6 @@ public partial class SettingsPage : ContentPage
             case "Русский":
                 LocalizationResourceManager.Instance.CurrentCulture = new CultureInfo("ru");
                 break;
-            case "Eesti":
-                LocalizationResourceManager.Instance.CurrentCulture = new CultureInfo("et");
-                break;
         }
     }
 
