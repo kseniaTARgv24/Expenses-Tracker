@@ -7,9 +7,17 @@
     Shell.FlyoutBehavior="Flyout"
     Title="Expenses_Tracker">
 
+    <FlyoutItem Title="Settings" Icon="settings.png">
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings" Icon="settings.png">
+        <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" />
+    </FlyoutItem>
+
+
 
 </Shell>

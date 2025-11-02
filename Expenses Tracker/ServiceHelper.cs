@@ -6,5 +6,3 @@ public static class ServiceHelper
     public static IServiceProvider Current =>
         IPlatformApplication.Current.Services;
 }
-
-

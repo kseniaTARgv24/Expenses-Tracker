@@ -5,21 +5,60 @@
              x:Class="Expenses_Tracker.Views.MainPage"
              x:DataType="vm:MainViewModel"
              Title="Expenses Tracker"
-             x:Name="ThisPage" >
+             x:Name="ThisPage">
 
     <Grid Padding="12">
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-
             <RowDefinition Height="Auto" />
-
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <Label Grid.Row="0"
+               Text="{Binding CurrentMonth}"
+               FontAttributes="Bold"
+               FontSize="28"
+               HorizontalOptions="Center"
+               Margin="0,0,0,8"
+               TextColor="#333" />
 
-        <CollectionView Grid.Row="0"
+        <HorizontalStackLayout Grid.Row="1"
+                               HorizontalOptions="Center"
+                               Spacing="32"
+                               Margin="0,0,0,16">
+
+            <VerticalStackLayout>
+                <Label Text="Total income:"
+                       FontSize="14"
+                       HorizontalOptions="Center"
+                       TextColor="#2E7D32" />
+                <Label Text="{Binding TotalIncome, StringFormat='{0:C}'}"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="Green"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Total Expenses:"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="#B71C1C" />
+                <Label Text="{Binding TotalExpense, StringFormat='{0:C}'}"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="Red"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+        </HorizontalStackLayout>
+
+        <CollectionView Grid.Row="2"
                         ItemsSource="{Binding Transactions}"
-                        VerticalScrollBarVisibility="Always">
+                        VerticalScrollBarVisibility="Always"
+                        Margin="0,0,0,12">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="vm:TransactionViewItem">
                     <SwipeView>
@@ -28,7 +67,7 @@
                                 <SwipeItem Text="Delete"
                                            BackgroundColor="Red"
                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=DeleteCommand}"
-                                           CommandParameter="{Binding .}" />
+                                           CommandParameter="{Binding Transaction}" />
                             </SwipeItems>
                         </SwipeView.RightItems>
 
@@ -37,34 +76,34 @@
                                 <SwipeItem Text="Details"
                                            BackgroundColor="LightBlue"
                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=ShowDetailsCommand}"
-                                           CommandParameter="{Binding .}" />
+                                           CommandParameter="{Binding Transaction}" />
                             </SwipeItems>
                         </SwipeView.LeftItems>
 
-                        <Grid Padding="8" ColumnDefinitions="*,*,*">
+                        <Grid Padding="8" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
+                            <Label Grid.Column="0"
+                                   Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}"
+                                   FontSize="14"
+                                   HorizontalOptions="Start" />
 
-                            <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" 
-                               FontSize="14" 
-                               HorizontalOptions="Start" />
+                            <Label Grid.Column="1"
+                                   Text="{Binding CategoryDisplay}"
+                                   FontSize="14"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center" />
 
-                         
-                            <Label Text="{Binding CategoryDisplay}" 
-                                   FontSize="14" 
-                                   HorizontalOptions="Center" />
-
-                           
-                            <Label Text="{Binding AmountText, StringFormat='{}{0:C}'}"
-                               FontAttributes="Bold"
-                               TextColor="{Binding AmountColor}"
-                               HorizontalOptions="End" />
+                            <Label Grid.Column="2"
+                                   Text="{Binding AmountText, StringFormat='{}{0:C}'}"
+                                   FontAttributes="Bold"
+                                   TextColor="{Binding AmountColor}"
+                                   HorizontalOptions="End" />
                         </Grid>
-
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <HorizontalStackLayout Grid.Row="1"
+        <HorizontalStackLayout Grid.Row="3"
                                Spacing="12"
                                Padding="0,12,0,0"
                                HorizontalOptions="Center">

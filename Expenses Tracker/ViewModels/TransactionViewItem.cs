@@ -26,9 +26,11 @@ namespace Expenses_Tracker.ViewModels
 
         public string CategoryDisplay =>
             Category != null ? (Category.Icon ?? Category.Name) : "—";
+        
 
         public DateTime Date => Transaction.Date;
         public string Note => Transaction.Note;
         public TransactionType Type => Transaction.Type;
+        
     }
 }

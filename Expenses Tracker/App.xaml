@@ -8,6 +8,19 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary>
+
+                    <Style x:Key="LabelStyle" TargetType="Label">
+                        <Setter Property="TextColor" Value="{AppThemeBinding Light=#333, Dark=#FFF}" />
+                        <Setter Property="FontSize" Value="16" />
+                    </Style>
+
+                    <Style x:Key="TitleLabelStyle" TargetType="Label">
+                        <Setter Property="FontSize" Value="24" />
+                        <Setter Property="FontAttributes" Value="Bold" />
+                        <Setter Property="TextColor" Value="{AppThemeBinding Light=#333, Dark=#FFF}" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

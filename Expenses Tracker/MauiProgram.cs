@@ -1,8 +1,9 @@
-﻿using Expenses_Tracker.Services;
+﻿using CommunityToolkit.Maui;
+using Expenses_Tracker.Services;
 using Expenses_Tracker.Services.Interfaces;
-using Microsoft.Extensions.Logging;
 using Expenses_Tracker.ViewModels;
 using Expenses_Tracker.Views;
+using Microsoft.Extensions.Logging;
 
 namespace Expenses_Tracker
 {
@@ -13,6 +14,7 @@ namespace Expenses_Tracker
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -33,6 +35,9 @@ namespace Expenses_Tracker
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<App>();
+
+
+
 #endif
 
             return builder.Build();
