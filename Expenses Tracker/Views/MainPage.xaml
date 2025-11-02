@@ -1,0 +1,76 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Expenses_Tracker.ViewModels"
+             xmlns:models="clr-namespace:Expenses_Tracker.Models"
+             x:Class="Expenses_Tracker.Views.MainPage"
+             x:DataType="vm:MainViewModel"
+             Title="Expenses Tracker"
+             x:Name="ThisPage" >
+
+    <Grid Padding="12">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+
+            <RowDefinition Height="Auto" />
+
+        </Grid.RowDefinitions>
+
+
+        <CollectionView Grid.Row="0"
+                        ItemsSource="{Binding Transactions}"
+                        VerticalScrollBarVisibility="Always">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:TransactionViewItem">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=DeleteCommand}"
+                                           CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Details"
+                                           BackgroundColor="LightBlue"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=ShowDetailsCommand}"
+                                           CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+
+                        <Grid Padding="8" ColumnDefinitions="*,*,*">
+
+                            <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" 
+                               FontSize="14" 
+                               HorizontalOptions="Start" />
+
+                         
+                            <Label Text="{Binding CategoryDisplay}" 
+                                   FontSize="14" 
+                                   HorizontalOptions="Center" />
+
+                           
+                            <Label Text="{Binding AmountText, StringFormat='{}{0:C}'}"
+                               FontAttributes="Bold"
+                               TextColor="{Binding AmountColor}"
+                               HorizontalOptions="End" />
+                        </Grid>
+
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <HorizontalStackLayout Grid.Row="1"
+                               Spacing="12"
+                               Padding="0,12,0,0"
+                               HorizontalOptions="Center">
+            <Button Text="Add Transaction" Clicked="OnAddClicked" />
+            <Button Text="Add Category" Clicked="OnAddCatClicked" />
+        </HorizontalStackLayout>
+
+    </Grid>
+</ContentPage>
