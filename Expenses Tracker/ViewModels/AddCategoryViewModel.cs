@@ -56,5 +56,14 @@ namespace Expenses_Tracker.ViewModels
 
             await LoadCategoriesAsync();
         }
+
+        [RelayCommand]
+        private async Task DeleteCategoryAsync(Category category)
+        {
+            if (category == null) return;
+            await _db.DeleteCategoryAsync(category);
+            await App.Current.MainPage.DisplayAlert("Удалено", "Категория успешно удалена!", "OK");
+            await LoadCategoriesAsync();
+        }
     }
 }

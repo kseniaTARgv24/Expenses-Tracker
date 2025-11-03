@@ -1,4 +1,4 @@
-﻿namespace Expenses_Tracker;
+﻿namespace Expenses_Tracker.Helpers;
 
 public static class ServiceHelper
 {

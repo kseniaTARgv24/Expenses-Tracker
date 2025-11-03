@@ -118,63 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add_New_Transaction" xml:space="preserve">
-    <value>Add new transaction</value>
+    <value>Добавить новую транзакцию</value>
   </data>
   <data name="Amount" xml:space="preserve">
-    <value>Amount:</value>
+    <value>Количество:</value>
   </data>
   <data name="Category" xml:space="preserve">
-    <value>Category:</value>
+    <value>Категория:</value>
   </data>
   <data name="Category_Name" xml:space="preserve">
-    <value>Category name</value>
+    <value>Название категории</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Удалить</value>
   </data>
   <data name="Expense" xml:space="preserve">
-    <value>Expense</value>
+    <value>Расход</value>
   </data>
   <data name="Income" xml:space="preserve">
-    <value>Income</value>
+    <value>Доход</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Сохранить</value>
   </data>
   <data name="Transaction_Details" xml:space="preserve">
-    <value>Transaction details</value>
+    <value>Детали транзакции</value>
   </data>
   <data name="Add_New_Category" xml:space="preserve">
-    <value>Add new category</value>
+    <value>Добавить новую категорию</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Date:</value>
+    <value>Дата:</value>
   </data>
   <data name="Note" xml:space="preserve">
-    <value>Note:</value>
+    <value>Заметка:</value>
   </data>
   <data name="Type" xml:space="preserve">
-    <value>Type:</value>
+    <value>Тип</value>
   </data>
   <data name="Total_Income" xml:space="preserve">
-    <value>Total income:</value>
+    <value>Общий доход:</value>
   </data>
   <data name="Total_Expenses" xml:space="preserve">
-    <value>Total expenses:</value>
+    <value>Потрачено:</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Details</value>
+    <value>Детали</value>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>Light</value>
+    <value>Светлая</value>
   </data>
   <data name="Dark" xml:space="preserve">
-    <value>Dark</value>
+    <value>Тёмная</value>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>Theme</value>
+    <value>Тема</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Язык</value>
   </data>
 </root>

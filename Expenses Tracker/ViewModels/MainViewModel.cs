@@ -4,6 +4,7 @@ using Expenses_Tracker.Services.Interfaces;
 using System.Collections.ObjectModel;
 using Expenses_Tracker.Models;
 using Expenses_Tracker.Views;
+using Expenses_Tracker.Resources;
 
 
 
@@ -17,10 +18,10 @@ namespace Expenses_Tracker.ViewModels
 
 
         [ObservableProperty]
-        private string todayText = DateTime.Now.ToString("dd MM yyyy"); //public string ToString([StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string? format)
+        private string todayText = DateTime.Now.ToString("dd MM yyyy",  LocalizationResourceManager.Instance.CurrentCulture); //public string ToString([StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string? format)
 
         [ObservableProperty]
-        private string currentMonth = DateTime.Now.ToString("MMMM yyyy");  //grapths current month
+        private string currentMonth = DateTime.Now.ToString("MMMM yyyy", LocalizationResourceManager.Instance.CurrentCulture);  //grapths current month
 
         [ObservableProperty]
         private double totalIncome;  //grapths current month

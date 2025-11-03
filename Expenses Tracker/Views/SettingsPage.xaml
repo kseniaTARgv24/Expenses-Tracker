@@ -2,13 +2,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Expenses_Tracker.Views.SettingsPage"
              xmlns:resx="clr-namespace:Expenses_Tracker.Resources"
+             xmlns:helpers="clr-namespace:Expenses_Tracker.Helpers"
              Title="Settings">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
 
             <!-- Тема -->
-            <Label Text="Theme" FontAttributes="Bold" FontSize="18"/>
+            <Label Text="{helpers:Translate Text=Theme}" FontAttributes="Bold" FontSize="18"/>
             <Picker x:Name="ThemePicker"
                     SelectedIndexChanged="ThemePicker_SelectedIndexChanged">
                 <Picker.Items>
@@ -18,15 +19,19 @@
             </Picker>
 
             <!-- Язык -->
-            <Label Text="Language" FontAttributes="Bold" FontSize="18"/>
+            <!--<Label Text="Language" FontAttributes="Bold" FontSize="18"/>
             <Picker x:Name="LanguagePicker"
                     SelectedIndexChanged="LanguagePicker_SelectedIndexChanged">
                 <Picker.Items>
                     <x:String>English</x:String>
                     <x:String>Русский</x:String>
-                    <x:String>Estonian</x:String>
                 </Picker.Items>
-            </Picker>
+            </Picker>-->
+
+            <HorizontalStackLayout>
+                <Button Text="Русский" Clicked="OnRussianClicked"/>
+                <Button Text="English" Clicked="OnEnglishClicked"/>
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>

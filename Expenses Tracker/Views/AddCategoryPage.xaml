@@ -1,5 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Expenses_Tracker.ViewModels"
              x:Class="Expenses_Tracker.Views.AddCategoryPage"
              Title="Add Category">
 
@@ -19,15 +20,28 @@
                 Command="{Binding SaveCategoryCommand}" />
 
         <CollectionView ItemsSource="{Binding Categories}"
-                        HeightRequest="200">
+                        HeightRequest="300"
+                        VerticalScrollBarVisibility="Always">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Padding="10" Margin="5" BorderColor="LightGray">
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding Icon}" FontSize="18"/>
-                            <Label Text="{Binding Name}" FontSize="18" Margin="10,0,0,0"/>
-                        </HorizontalStackLayout>
-                    </Frame>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AddCategoryViewModel}}, Path=DeleteCategoryCommand}"
+                                           CommandParameter="{Binding .}"
+                                            />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Frame Padding="10" Margin="5" BorderColor="LightGray">
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding Icon}" FontSize="18"/>
+                                <Label Text="{Binding Name}" FontSize="18" Margin="10,0,0,0"/>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

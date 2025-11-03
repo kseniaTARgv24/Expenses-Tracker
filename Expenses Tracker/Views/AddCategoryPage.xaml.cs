@@ -1,3 +1,4 @@
+using Expenses_Tracker.Helpers;
 using Expenses_Tracker.Resources;
 using Expenses_Tracker.Services.Interfaces;
 using Expenses_Tracker.ViewModels;
@@ -10,5 +11,6 @@ public partial class AddCategoryPage : ContentPage
 	{
 		InitializeComponent();
         BindingContext = new AddCategoryViewModel(ServiceHelper.GetService<IDatabaseService>());
+
     }
 }

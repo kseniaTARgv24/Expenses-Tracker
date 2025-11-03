@@ -1,6 +1,7 @@
 ﻿using Expenses_Tracker.Views;
 using Expenses_Tracker.ViewModels;
-using Expenses_Tracker.Resources;
+using Expenses_Tracker.Services;
+using System.Globalization;
 
 
 namespace Expenses_Tracker;
@@ -11,10 +12,22 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        LocalizationResourceManager.Instance.SetResourceManager(
-        Expenses_Tracker.Resources.Localization.AppResources.ResourceManager
-            );
+        // прочитать сохраненный язык (если есть)
+        var saved = Preferences.Get("AppLanguage", null);
+        if (!string.IsNullOrEmpty(saved))
+        {
+            try
+            {
+                LocalizationResourceManager.Instance.SetCulture(new CultureInfo(saved));
+            }
+            catch { }
+        }
 
-        MainPage = new NavigationPage(new Views.MainPage(mainVm));
+        /*LocalizationResourceManager.Instance.SetResourceManager(
+        Expenses_Tracker.Resources.Localization.AppResources.ResourceManager
+            );*/
+
+        //MainPage = new NavigationPage(new Views.MainPage(mainVm));
+        MainPage = new AppShell();
     }
 }
