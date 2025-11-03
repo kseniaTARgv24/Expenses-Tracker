@@ -120,6 +120,9 @@
   <data name="Add_New_Transaction" xml:space="preserve">
     <value>Add new transaction</value>
   </data>
+  <data name="Add_Transaction" xml:space="preserve">
+    <value>Add transaction</value>
+  </data>
   <data name="Amount" xml:space="preserve">
     <value>Amount:</value>
   </data>
@@ -145,7 +148,10 @@
     <value>Transaction details</value>
   </data>
   <data name="Add_New_Category" xml:space="preserve">
-    <value>Add new category</value>
+    <value>Add category</value>
+  </data>
+  <data name="Add_Category" xml:space="preserve">
+    <value>Add category</value>
   </data>
   <data name="Date" xml:space="preserve">
     <value>Date:</value>
@@ -176,5 +182,17 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Expenses_Tracker" xml:space="preserve">
+    <value>Expenses Tracker</value>
+  </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value>Main</value>
   </data>
 </root>

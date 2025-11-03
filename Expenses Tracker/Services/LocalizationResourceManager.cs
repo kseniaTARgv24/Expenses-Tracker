@@ -1,48 +1,67 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Expenses_Tracker.Resources.Localization;
+using System.Resources;
+using Microsoft.Maui.Storage; // Для Preferences
 
 namespace Expenses_Tracker.Services
 {
     public class LocalizationResourceManager : INotifyPropertyChanged
     {
-        public static LocalizationResourceManager Instance { get; } = new LocalizationResourceManager();
+        private static LocalizationResourceManager _instance;
+        public static LocalizationResourceManager Instance => _instance ??= new LocalizationResourceManager();
+
+        private ResourceManager _resourceManager;
+        private CultureInfo _currentCulture;
 
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler LanguageChanged;
 
         private LocalizationResourceManager() { }
 
+        public void SetResourceManager(ResourceManager resourceManager)
+        {
+            _resourceManager = resourceManager;
+
+            // Загружаем сохранённый язык или системный
+            var savedLang = Preferences.Get("AppLanguage", CultureInfo.CurrentUICulture.Name);
+            _currentCulture = new CultureInfo(savedLang);
+
+            CultureInfo.DefaultThreadCurrentCulture = _currentCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = _currentCulture;
+        }
+
+
         public string this[string text]
         {
             get
             {
-                if (string.IsNullOrEmpty(text)) return string.Empty;
-                var val = AppResources.ResourceManager.GetString(text, CultureInfo.CurrentUICulture);
-                return val ?? text; 
+                if (_resourceManager == null) return text;
+                return _resourceManager.GetString(text, _currentCulture) ?? text;
             }
         }
 
-        public void SetCulture(CultureInfo ci)
+
+        public CultureInfo CurrentCulture
         {
-            if (ci == null) return;
+            get => _currentCulture;
+            set
+            {
+                if (value == null || _currentCulture?.Name == value.Name) return;
 
-            CultureInfo.DefaultThreadCurrentCulture = ci;
-            CultureInfo.DefaultThreadCurrentUICulture = ci;
+                _currentCulture = value;
 
-            // оповещение для подписчиков
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
-            LanguageChanged?.Invoke(this, EventArgs.Empty);
+                CultureInfo.DefaultThreadCurrentCulture = value;
+                CultureInfo.DefaultThreadCurrentUICulture = value;
 
-            // сохраняем выбор
-            Preferences.Set("AppLanguage", ci.Name);
+                Preferences.Set("AppLanguage", value.Name);
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
+                LanguageChanged?.Invoke(this, EventArgs.Empty);
+            }
         }
 
-        public CultureInfo GetCurrentCulture() => CultureInfo.CurrentUICulture;
+
+        public void SetCulture(CultureInfo ci) => CurrentCulture = ci;
     }
 }

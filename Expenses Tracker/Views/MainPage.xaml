@@ -5,8 +5,9 @@
              xmlns:helpers="clr-namespace:Expenses_Tracker.Helpers"
              x:Class="Expenses_Tracker.Views.MainPage"
              x:DataType="vm:MainViewModel"
-             Title="Expenses Tracker"
-             x:Name="ThisPage">
+             Title="{helpers:Translate Text=Expenses_Tracker}"
+             x:Name="ThisPage"
+             >
 
     <Grid Padding="12">
         <Grid.RowDefinitions>
@@ -30,7 +31,7 @@
                                Margin="0,0,0,16">
 
             <VerticalStackLayout>
-                <Label Text="{helpers:Translate Text=Total income}"
+                <Label Text="{helpers:Translate Text=Total_Income}"
                     FontSize="14"
                        HorizontalOptions="Center"
                        TextColor="#2E7D32" />
@@ -42,7 +43,7 @@
             </VerticalStackLayout>
 
             <VerticalStackLayout>
-                <Label Text="Total Expenses:"
+                <Label Text="{helpers:Translate Text=Total_Expenses}"
                        FontSize="16"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
@@ -65,7 +66,7 @@
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems>
-                                <SwipeItem Text="Delete"
+                                <SwipeItem Text="{helpers:Translate Text=Delete}"
                                            BackgroundColor="Red"
                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=DeleteCommand}"
                                            CommandParameter="{Binding Transaction}" />
@@ -74,7 +75,7 @@
 
                         <SwipeView.LeftItems>
                             <SwipeItems>
-                                <SwipeItem Text="Details"
+                                <SwipeItem Text="{helpers:Translate Text=Details}"
                                            BackgroundColor="LightBlue"
                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=ShowDetailsCommand}"
                                            CommandParameter="{Binding Transaction}" />
@@ -108,8 +109,8 @@
                                Spacing="12"
                                Padding="0,12,0,0"
                                HorizontalOptions="Center">
-            <Button Text="Add Transaction" Clicked="OnAddClicked" />
-            <Button Text="Add Category" Clicked="OnAddCatClicked" />
+            <Button Text="{helpers:Translate Text=Add_Transaction}" Clicked="OnAddClicked" />
+            <Button Text="{helpers:Translate Text=Add_Category}" Clicked="OnAddCatClicked" />
         </HorizontalStackLayout>
 
     </Grid>

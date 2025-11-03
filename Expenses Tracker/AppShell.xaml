@@ -5,16 +5,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Expenses_Tracker.Views"
     Shell.FlyoutBehavior="Flyout"
+    xmlns:helpers="clr-namespace:Expenses_Tracker.Helpers"
     Title="Expenses_Tracker">
 
-    <FlyoutItem Title="MainPage" Icon="settings.png">
+    <FlyoutItem Title="{helpers:Translate Text=Main}" Icon="settings.png">
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Settings" Icon="settings.png">
+    <FlyoutItem Title="{helpers:Translate Text=Settings}" Icon="settings.png">
         <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" />
     </FlyoutItem>
 

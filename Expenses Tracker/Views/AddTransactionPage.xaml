@@ -3,27 +3,28 @@
              xmlns:vm="clr-namespace:Expenses_Tracker.ViewModels"
              xmlns:models="clr-namespace:Expenses_Tracker.Models"
              x:Class="Expenses_Tracker.Views.AddTransactionPage"
-             Title="Add Transaction">
+             Title="{helpers:Translate Text=Add_New_Transaction}"
+             xmlns:helpers="clr-namespace:Expenses_Tracker.Helpers">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="12">
 
-            <Entry x:Name="AmountEntry" Placeholder="Amount" Keyboard="Numeric" Text="{Binding Amount, Mode=TwoWay}"/>
-            <Label Text="Date:" FontAttributes="Bold" />
+            <Entry x:Name="AmountEntry" Placeholder="{helpers:Translate Text=Amount}" Keyboard="Numeric" Text="{Binding Amount, Mode=TwoWay}"/>
+            <Label Text="{helpers:Translate Text=Date}" FontAttributes="Bold" />
             <DatePicker Date="{Binding Date}" />
-            <Picker Title="Type"
+            <Picker Title="{helpers:Translate Text=Type}"
                 ItemsSource="{Binding TransactionTypes}"
                 SelectedItem="{Binding Type, Mode=TwoWay}" />
 
-            <Picker Title="Category"
+            <Picker Title="{helpers:Translate Text=Category}"
                 ItemsSource="{Binding Categories}"
                 SelectedItem="{Binding SelectedCategory}"
                 ItemDisplayBinding="{Binding Name}"
                 IsVisible="{Binding IsExpense}" />
 
-            <Editor x:Name="NoteEditor" Placeholder="Note (optional)" />
+            <Editor x:Name="NoteEditor" Placeholder="{helpers:Translate Text=Note}" />
 
-            <Button Text="Save" Command="{Binding SaveTransactionCommand}"/>
+            <Button Text="{helpers:Translate Text=Save}" Command="{Binding SaveTransactionCommand}"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

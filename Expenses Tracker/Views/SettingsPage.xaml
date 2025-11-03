@@ -1,37 +1,93 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Expenses_Tracker.Views.SettingsPage"
-             xmlns:resx="clr-namespace:Expenses_Tracker.Resources"
              xmlns:helpers="clr-namespace:Expenses_Tracker.Helpers"
-             Title="Settings">
+             Title="{helpers:Translate Text=Settings}"
+             BackgroundColor="{AppThemeBinding Light=#f9f9f9, Dark=#1e1e1e}">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout Padding="25" Spacing="25">
 
-            <!-- Тема -->
-            <Label Text="{helpers:Translate Text=Theme}" FontAttributes="Bold" FontSize="18"/>
-            <Picker x:Name="ThemePicker"
-                    SelectedIndexChanged="ThemePicker_SelectedIndexChanged">
-                <Picker.Items>
-                    <x:String>Light</x:String>
-                    <x:String>Dark</x:String>
-                </Picker.Items>
-            </Picker>
+            <Label Text="{helpers:Translate Text=Settings}"
+                   FontAttributes="Bold"
+                   FontSize="24"
+                   HorizontalOptions="Center"
+                   TextColor="{AppThemeBinding Light=#222, Dark=#fff}"/>
 
-            <!-- Язык -->
-            <!--<Label Text="Language" FontAttributes="Bold" FontSize="18"/>
-            <Picker x:Name="LanguagePicker"
-                    SelectedIndexChanged="LanguagePicker_SelectedIndexChanged">
-                <Picker.Items>
-                    <x:String>English</x:String>
-                    <x:String>Русский</x:String>
-                </Picker.Items>
-            </Picker>-->
+            <Frame CornerRadius="16"
+                   Padding="20"
+                   HasShadow="True"
+                   BackgroundColor="{AppThemeBinding Light=#fff, Dark=#2a2a2a}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{helpers:Translate Text=Theme}"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           TextColor="{AppThemeBinding Light=#333, Dark=#fff}"/>
 
-            <HorizontalStackLayout>
-                <Button Text="Русский" Clicked="OnRussianClicked"/>
-                <Button Text="English" Clicked="OnEnglishClicked"/>
-            </HorizontalStackLayout>
+                    <Picker x:Name="ThemePicker"
+                            SelectedIndexChanged="ThemePicker_SelectedIndexChanged"
+                            TextColor="{AppThemeBinding Light=#000, Dark=#fff}"
+                            TitleColor="{AppThemeBinding Light=#666, Dark=#aaa}"
+                            BackgroundColor="{AppThemeBinding Light=#f2f2f2, Dark=#3a3a3a}"
+                            FontSize="16"
+                            HeightRequest="45"
+                            HorizontalOptions="Fill">
+                        <Picker.Items>
+                            <x:String>Light</x:String>
+                            <x:String>Dark</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame CornerRadius="16"
+                   Padding="20"
+                   HasShadow="True"
+                   BackgroundColor="{AppThemeBinding Light=#fff, Dark=#2a2a2a}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{helpers:Translate Text=Language}"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           TextColor="{AppThemeBinding Light=#333, Dark=#fff}"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="25">
+                      
+                        <ImageButton Source="rus.png"
+                                     Clicked="OnRussianClicked"
+                                     WidthRequest="64"
+                                     HeightRequest="42"
+                                     BackgroundColor="Transparent"/>
+
+                
+                        <ImageButton Source="eng.png"
+                                     Clicked="OnEnglishClicked"
+                                     WidthRequest="64"
+                                     HeightRequest="42"
+                                     BackgroundColor="Transparent"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <VerticalStackLayout Spacing="10">
+                <Label Text="{helpers:Translate Text=Currency}"
+           FontAttributes="Bold"
+           FontSize="18"
+           TextColor="{AppThemeBinding Light=#333, Dark=#fff}"/>
+
+                <Picker x:Name="CurrencyPicker"
+            SelectedIndexChanged="CurrencyPicker_SelectedIndexChanged"
+            TextColor="{AppThemeBinding Light=#000, Dark=#fff}"
+            BackgroundColor="{AppThemeBinding Light=#f2f2f2, Dark=#3a3a3a}"
+            FontSize="16"
+            HeightRequest="45"
+            HorizontalOptions="Fill">
+                    <Picker.Items>
+                        <x:String>$ (USD)</x:String>
+                        <x:String>€ (EUR)</x:String>
+                        <x:String>₽ (RUB)</x:String>
+                    </Picker.Items>
+                </Picker>
+            </VerticalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>

@@ -1,14 +1,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Expenses_Tracker.Views.TransactionDetailsPage"
-             Title="Transaction Details"
+             Title="{helpers:Translate Text=Transaction_Details}"
              xmlns:vm="clr-namespace:Expenses_Tracker.ViewModels"
-             x:DataType="vm:TransactionDetailsViewModel">
+             x:DataType="vm:TransactionDetailsViewModel"
+             xmlns:helpers="clr-namespace:Expenses_Tracker.Helpers">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="12">
 
-            <Label Text="Transaction Details"
+            <Label Text="{helpers:Translate Text=Details}"
                    FontSize="24"
                    HorizontalOptions="Center" />
 
@@ -16,26 +17,24 @@
 
                 <VerticalStackLayout Spacing="10">
 
-                    <Label Text="Amount:" FontAttributes="Bold"/>
+                    <Label Text="{helpers:Translate Text=Amount}" FontAttributes="Bold"/>
                     <Label Text="{Binding Amount, StringFormat='{}{0:C2}'}"/>
 
-                    <Label Text="Category:" FontAttributes="Bold" IsVisible="{Binding IsExpense}"/>
+                    <Label Text="{helpers:Translate Text=Category}" FontAttributes="Bold" IsVisible="{Binding IsExpense}"/>
                     <Label Text="{Binding CategoryDisplay}" 
                            IsVisible="{Binding IsExpense}"/>
 
-                    <Label Text="Date:" FontAttributes="Bold"/>
+                    <Label Text="{helpers:Translate Text=Date}" FontAttributes="Bold"/>
                     <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy HH:mm}'}"/>
 
-                    <Label Text="Note:" FontAttributes="Bold"/>
+                    <Label Text="{helpers:Translate Text=Note}" FontAttributes="Bold"/>
                     <Label Text="{Binding Note}" />
 
-                    <Label Text="Type:" FontAttributes="Bold"/>
+                    <Label Text="{helpers:Translate Text=Type}" FontAttributes="Bold"/>
                     <Label Text="{Binding Type}" />
                 </VerticalStackLayout>
 
             </Frame>
-
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

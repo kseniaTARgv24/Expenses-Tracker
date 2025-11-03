@@ -2,21 +2,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Expenses_Tracker.ViewModels"
              x:Class="Expenses_Tracker.Views.AddCategoryPage"
-             Title="Add Category">
+             xmlns:helpers="clr-namespace:Expenses_Tracker.Helpers"
+             Title="{helpers:Translate Text=Add_New_Category}"
+             >
 
     <VerticalStackLayout Padding="20" Spacing="15">
 
-        <Label Text="Add New Category"
+        <Label Text="{helpers:Translate Text=Add_New_Category}"
                FontSize="24"
                HorizontalOptions="Center" />
 
-        <Entry Placeholder="Category Name"
+        <Entry Placeholder="{helpers:Translate Text=Category_Name}"
                Text="{Binding Name}" />
 
-        <Entry Placeholder="Icon (optional)"
+        <Entry Placeholder="{helpers:Translate Text=Icon}"
                Text="{Binding Icon}" />
 
-        <Button Text="Save"
+        <Button Text="{helpers:Translate Text=Save}"
                 Command="{Binding SaveCategoryCommand}" />
 
         <CollectionView ItemsSource="{Binding Categories}"
@@ -27,7 +29,7 @@
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems>
-                                <SwipeItem Text="Delete"
+                                <SwipeItem Text="{helpers:Translate Text=Delete}"
                                            BackgroundColor="Red"
                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AddCategoryViewModel}}, Path=DeleteCategoryCommand}"
                                            CommandParameter="{Binding .}"

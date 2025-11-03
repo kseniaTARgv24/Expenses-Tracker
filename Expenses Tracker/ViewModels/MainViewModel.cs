@@ -1,10 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Expenses_Tracker.Services.Interfaces;
-using System.Collections.ObjectModel;
 using Expenses_Tracker.Models;
-using Expenses_Tracker.Views;
 using Expenses_Tracker.Resources;
+using Expenses_Tracker.Services;
+using Expenses_Tracker.Services.Interfaces;
+using Expenses_Tracker.Views;
+using System.Collections.ObjectModel;
 
 
 
@@ -36,6 +37,7 @@ namespace Expenses_Tracker.ViewModels
         public MainViewModel(IDatabaseService db)
         {
             _db = db;
+            SettingsService.OnCurrencyChanged += (s, e) => UpdateCurrency();
         }
 
         [RelayCommand]   //using CommunityToolkit.Mvvm.Input;
@@ -114,6 +116,22 @@ namespace Expenses_Tracker.ViewModels
 
         /////////////////////////////////
 
+        [ObservableProperty]
+        private string totalIncomeFormatted;
+
+        partial void OnTotalIncomeChanged(double value) => TotalIncomeFormatted = $"{SettingsService.CurrencySymbol}{value:N2}";
+
+        [ObservableProperty]
+        private string totalExpenseFormatted;
+
+        partial void OnTotalExpenseChanged(double value) => TotalExpenseFormatted = $"{SettingsService.CurrencySymbol}{value:N2}";
+
+
+        private void UpdateCurrency()
+        {
+            OnPropertyChanged(nameof(TotalIncomeFormatted));
+            OnPropertyChanged(nameof(TotalExpenseFormatted));
+        }
 
     }
 }

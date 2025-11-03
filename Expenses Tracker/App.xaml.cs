@@ -23,9 +23,9 @@ public partial class App : Application
             catch { }
         }
 
-        /*LocalizationResourceManager.Instance.SetResourceManager(
+        LocalizationResourceManager.Instance.SetResourceManager(
         Expenses_Tracker.Resources.Localization.AppResources.ResourceManager
-            );*/
+            );
 
         //MainPage = new NavigationPage(new Views.MainPage(mainVm));
         MainPage = new AppShell();

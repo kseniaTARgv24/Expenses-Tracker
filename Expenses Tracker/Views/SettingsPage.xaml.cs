@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using Expenses_Tracker.Services;
+using Expenses_Tracker.Resources;
 
 namespace Expenses_Tracker.Views;
 
@@ -9,9 +10,15 @@ public partial class SettingsPage : ContentPage
     {
         InitializeComponent();
 
-        // Инициализация выбранных значений
-        /*ThemePicker.SelectedIndex = App.Current.RequestedTheme == AppTheme.Dark ? 1 : 0;
-        LanguagePicker.SelectedIndex = 0; // по умолчанию English*/
+        ThemePicker.SelectedIndex = App.Current.RequestedTheme == AppTheme.Dark ? 1 : 0;
+        CurrencyPicker.SelectedIndex = SettingsService.CurrencySymbol switch
+        {
+            "$" => 0,
+            "€" => 1,
+            "₽" => 2,
+            _ => 0
+        };
+
     }
 
     private void ThemePicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -25,6 +32,7 @@ public partial class SettingsPage : ContentPage
 
     private void ApplyLanguage(string lang)
     {
+        
         var ci = new CultureInfo(lang);
         LocalizationResourceManager.Instance.SetCulture(ci);
     }
@@ -42,18 +50,14 @@ public partial class SettingsPage : ContentPage
     }
 
 
-    /*private void LanguagePicker_SelectedIndexChanged(object sender, EventArgs e)
+    private void CurrencyPicker_SelectedIndexChanged(object sender, EventArgs e)
     {
-        var selected = LanguagePicker.SelectedItem.ToString();
-        switch (selected)
-        {
-            case "English":
-                LocalizationResourceManager.Instance.CurrentCulture = new CultureInfo("en");
-                break;
-            case "Русский":
-                LocalizationResourceManager.Instance.CurrentCulture = new CultureInfo("ru");
-                break;
-        }
-    }*/
+        var selected = CurrencyPicker.SelectedItem?.ToString();
+
+        if (selected.Contains("$")) SettingsService.CurrencySymbol = "$";
+        else if (selected.Contains("€")) SettingsService.CurrencySymbol = "€";
+        else if (selected.Contains("₽")) SettingsService.CurrencySymbol = "₽";
+    }
+
 
 }

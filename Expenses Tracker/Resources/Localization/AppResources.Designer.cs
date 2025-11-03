@@ -61,7 +61,16 @@ namespace Expenses_Tracker.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add new category.
+        ///   Looks up a localized string similar to Add category.
+        /// </summary>
+        public static string Add_Category {
+            get {
+                return ResourceManager.GetString("Add_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add category.
         /// </summary>
         public static string Add_New_Category {
             get {
@@ -75,6 +84,15 @@ namespace Expenses_Tracker.Resources.Localization {
         public static string Add_New_Transaction {
             get {
                 return ResourceManager.GetString("Add_New_Transaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add transaction.
+        /// </summary>
+        public static string Add_Transaction {
+            get {
+                return ResourceManager.GetString("Add_Transaction", resourceCulture);
             }
         }
         
@@ -151,6 +169,24 @@ namespace Expenses_Tracker.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expenses Tracker.
+        /// </summary>
+        public static string Expenses_Tracker {
+            get {
+                return ResourceManager.GetString("Expenses_Tracker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Icon.
+        /// </summary>
+        public static string Icon {
+            get {
+                return ResourceManager.GetString("Icon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Income.
         /// </summary>
         public static string Income {
@@ -178,6 +214,15 @@ namespace Expenses_Tracker.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Main.
+        /// </summary>
+        public static string Main {
+            get {
+                return ResourceManager.GetString("Main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Note:.
         /// </summary>
         public static string Note {
@@ -192,6 +237,15 @@ namespace Expenses_Tracker.Resources.Localization {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
         
