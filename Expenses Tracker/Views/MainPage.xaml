@@ -35,7 +35,7 @@
                     FontSize="14"
                        HorizontalOptions="Center"
                        TextColor="#2E7D32" />
-                <Label Text="{Binding TotalIncome, StringFormat='{0:C}'}"
+                <Label Text="{Binding TotalIncomeFormatted}"
                        FontSize="20"
                        FontAttributes="Bold"
                        TextColor="Green"
@@ -48,7 +48,7 @@
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
                        TextColor="#B71C1C" />
-                <Label Text="{Binding TotalExpense, StringFormat='{0:C}'}"
+                <Label Text="{Binding TotalExpenseFormatted}"
                        FontSize="24"
                        FontAttributes="Bold"
                        TextColor="Red"

@@ -31,6 +31,12 @@ namespace Expenses_Tracker.ViewModels
         private double totalExpense;  //grapths current month
 
         [ObservableProperty]
+        private string totalExpenseFormatted;
+
+        [ObservableProperty]
+        private string totalIncomeFormatted;
+
+        [ObservableProperty]
         private ObservableCollection<CategoryExpense> categoryExpenses = new(); //grapths current month
         public ObservableCollection<TransactionViewItem> Transactions { get; } = new();
 
@@ -116,22 +122,17 @@ namespace Expenses_Tracker.ViewModels
 
         /////////////////////////////////
 
-        [ObservableProperty]
-        private string totalIncomeFormatted;
-
         partial void OnTotalIncomeChanged(double value) => TotalIncomeFormatted = $"{SettingsService.CurrencySymbol}{value:N2}";
-
-        [ObservableProperty]
-        private string totalExpenseFormatted;
 
         partial void OnTotalExpenseChanged(double value) => TotalExpenseFormatted = $"{SettingsService.CurrencySymbol}{value:N2}";
 
 
         private void UpdateCurrency()
         {
-            OnPropertyChanged(nameof(TotalIncomeFormatted));
-            OnPropertyChanged(nameof(TotalExpenseFormatted));
+            TotalIncomeFormatted = $"{SettingsService.CurrencySymbol}{TotalIncome:N2}";
+            TotalExpenseFormatted = $"{SettingsService.CurrencySymbol}{TotalExpense:N2}";
         }
+
 
     }
 }
