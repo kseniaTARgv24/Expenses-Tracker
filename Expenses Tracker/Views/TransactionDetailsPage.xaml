@@ -18,7 +18,7 @@
                 <VerticalStackLayout Spacing="10">
 
                     <Label Text="{helpers:Translate Text=Amount}" FontAttributes="Bold"/>
-                    <Label Text="{Binding Amount, StringFormat='{}{0:C2}'}"/>
+                    <Label Text="{Binding Amount, StringFormat='{}{0:N2}'}"/>
 
                     <Label Text="{helpers:Translate Text=Category}" FontAttributes="Bold" IsVisible="{Binding IsExpense}"/>
                     <Label Text="{Binding CategoryDisplay}" 

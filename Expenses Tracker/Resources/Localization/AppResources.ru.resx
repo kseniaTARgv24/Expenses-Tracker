@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add_New_Transaction" xml:space="preserve">
-    <value>Добавить транзакцию</value>
+    <value>Новая транзакция</value>
   </data>
   <data name="Add_Transaction" xml:space="preserve">
-    <value>Добавить транзакцию</value>
+    <value>Новая транзакция</value>
   </data>
   <data name="Amount" xml:space="preserve">
     <value>Количество:</value>
@@ -148,10 +148,10 @@
     <value>Детали транзакции</value>
   </data>
   <data name="Add_New_Category" xml:space="preserve">
-    <value>Добавить категорию</value>
+    <value>Новая категория</value>
   </data>
   <data name="Add_Category" xml:space="preserve">
-    <value>Добавить категорию</value>
+    <value>Новая категория</value>
   </data>
   <data name="Date" xml:space="preserve">
     <value>Дата:</value>
